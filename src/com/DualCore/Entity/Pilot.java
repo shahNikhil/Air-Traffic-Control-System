@@ -1,7 +1,9 @@
 package com.DualCore.Entity;
 
 public class Pilot {
-
+	/**
+	 * Stores all the attributes for the Pilot model
+	 */
 	private int id = 0;
 	private String first_name = "";
 	private String last_name = "";

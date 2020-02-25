@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.DualCore.Entity.Pilot;
+import com.DualCore.Entity.Airport;
 /**
- * 	Back-end for the Pilot model
+ * 	Back-end for the Airport model
  */
-public class PilotImpl implements IPilot{
+public class AirportImpl implements IAirport {
 
 	public String dsn = "jdbc:mysql://localhost:3306/dualcore";
 	public String username = "root";
@@ -68,10 +68,11 @@ public class PilotImpl implements IPilot{
 
 	//CRUD Operations
 
-	//create a new Pilot
+	//create a new Airport
 	@Override
-	public int newPilot(Pilot p) {
-		int newPilotId = 0;
+	public int newAirport(Airport a) {
+
+		int newAirportId = 0;
 
 		try {
 
@@ -79,15 +80,15 @@ public class PilotImpl implements IPilot{
 			connectDB();
 
 			//prepare a string query to fire it over the database
-			String sql = "INSERT INTO pilot (first_name, last_name, age, gender, nationality, training_level)"
-					+ " Values ('" + p.getFirst_name() + "','" + p.getLast_name() + "','" + p.getAge() + "','" + p.getGender() + "','" + p.getNationality() +
-					"','" + p.getTraining_level() + "');";
+			String sql = "INSERT INTO airport (country, city, airport_name, airport_type, total_runways, total_terminals)"
+					+ " Values ('" + a.getCountry() + "','" + a.getCity() + "','" + a.getAirport_name() + "','" + a.getAirport_type() + "','" + a.getTotal_runways() +
+					"','" + a.getTotal_terminals() + "');";
 
 			//Create the statement
 			this.stmt = this.conn.createStatement();
 
 			//Execute the statement
-			newPilotId = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			newAirportId = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 
 			//Disconnect from the Database
 			disconnectDB();
@@ -98,20 +99,20 @@ public class PilotImpl implements IPilot{
 			System.out.println(sx.getMessage());
 		}
 
-		System.out.println("Inserted a new Pilot with ID: " + newPilotId);
+		System.out.println("Inserted a new Airport with ID: " + newAirportId);
 
-		return newPilotId;
+		return newAirportId;
 	}
 
-	//delete a Pilot
+	//delete an airport
 	@Override
-	public void deletePilot(int id) {
+	public void deleteAirport(int id) {
 		try {
 
 			connectDB();
 
 			//Query
-			String sql = "DELETE FROM pilot WHERE id=?";
+			String sql = "DELETE FROM airport WHERE id=?";
 
 			this.pstmt = this.conn.prepareStatement(sql);
 
@@ -121,7 +122,7 @@ public class PilotImpl implements IPilot{
 			//execute the query
 			this.pstmt.executeUpdate();
 
-			System.out.println("Deleted Pilot with id: " + id);
+			System.out.println("Deleted Airport with id: " + id);
 
 			disconnectDB();
 
@@ -132,13 +133,13 @@ public class PilotImpl implements IPilot{
 
 	}
 
-	//something like select * from pilot
+	//something like select * from
 	@Override
-	public ArrayList<Pilot> showPilots() {
-		ArrayList<Pilot> allPilots = new ArrayList<Pilot>();
+	public ArrayList<Airport> showAirports() {
+		ArrayList<Airport> allAirports = new ArrayList<Airport>();
 
 		//Query
-		String sql = "SELECT * FROM pilot";
+		String sql = "SELECT * FROM airport";
 
 		try {
 
@@ -150,22 +151,23 @@ public class PilotImpl implements IPilot{
 			//execute the statement
 			this.rs = this.stmt.executeQuery(sql);
 
-			//walk through the ResultSet and append all the pilots to the ArrayList
+			//walk through the ResultSet and append all the airports to the ArrayList
 
 			while(this.rs.next()) {
 
-				//create a new student object
-				Pilot p = new Pilot();
-				p.setId(rs.getInt("id"));
-				p.setFirst_name(rs.getString("first_name"));
-				p.setLast_name(rs.getString("last_name"));
-				p.setAge(rs.getInt("age"));
-				p.setGender(rs.getString("gender"));
-				p.setNationality(rs.getString("nationality"));
-				p.setTraining_level(rs.getInt("training_level"));
+				//create a new airport object
+				Airport a = new Airport();
 
-				//add the students to the ArrayList
-				allPilots.add(p);
+				a.setId(rs.getInt("id"));
+				a.setCountry(rs.getString("country"));
+				a.setCity(rs.getString("city"));
+				a.setAirport_name(rs.getString("airport_name"));
+				a.setAirport_type(rs.getString("airport_type"));
+				a.setTotal_runways(rs.getInt("total_runways"));
+				a.setTotal_terminals(rs.getInt("total_terminals"));
+
+				//add the airports to the ArrayList
+				allAirports.add(a);
 
 			}
 
@@ -176,20 +178,20 @@ public class PilotImpl implements IPilot{
 			System.out.println(sx.getMessage());
 		}
 
-		System.out.println("Listed " + allPilots.size() + " Pilots.");
+		System.out.println("Listed " + allAirports.size() + " Airports.");
 
 		//return the ArrayList
-		return allPilots;
+		return allAirports;
 	}
 
-	//retrieve a single Pilot
+	//retrieve a single object
 	@Override
-	public Pilot getPilot(int id) {
-		//create a new empty Pilot object
-		Pilot getP = new Pilot();
+	public Airport getAirport(int id) {
+		//create a new empty Airport object
+		Airport getA = new Airport();
 
 		//Query
-		String sql = "SELECT * FROM pilot WHERE id=?";
+		String sql = "SELECT * FROM airport WHERE id=?";
 
 		try {
 
@@ -205,13 +207,13 @@ public class PilotImpl implements IPilot{
 			this.rs = this.pstmt.executeQuery();
 
 			while(this.rs.next()) {
-				getP.setId(rs.getInt("id"));
-				getP.setFirst_name(rs.getString("first_name"));
-				getP.setLast_name(rs.getString("last_name"));
-				getP.setAge(rs.getInt("age"));
-				getP.setGender(rs.getString("gender"));
-				getP.setNationality(rs.getString("nationality"));
-				getP.setTraining_level(rs.getInt("training_level"));
+				getA.setId(rs.getInt("id"));
+				getA.setCountry(rs.getString("country"));
+				getA.setCity(rs.getString("city"));
+				getA.setAirport_name(rs.getString("airport_name"));
+				getA.setAirport_type(rs.getString("airport_type"));
+				getA.setTotal_runways(rs.getInt("total_runways"));
+				getA.setTotal_terminals(rs.getInt("total_terminals"));
 			}
 
 		}
@@ -224,21 +226,21 @@ public class PilotImpl implements IPilot{
 			disconnectDB();
 		}
 
-		//return the single pilot data
-		return getP;
+		//return the single airport data
+		return getA;
 	}
 
-	//update any pilot in the database
+	//update any airport in the database
 	@Override
-	public void updatePilot(Pilot up) {
+	public void updateAirport(Airport ua) {
 		//Query
-		String sql = "UPDATE pilot SET " + 
-				"first_name = ?, " + 
-				"last_name = ?, " +
-				"age = ?," +
-				"gender = ?, " + 
-				"nationality = ?," +
-				"training_level = ?, " + 
+		String sql = "UPDATE airport SET " + 
+				"country = ?, " + 
+				"city = ?, " +
+				"airport_name = ?, " +
+				"airport_type = ?, " + 
+				"total_runways = ?, " +
+				"total_terminals = ?, " + 
 				"WHERE id = ?";
 
 		try {
@@ -249,18 +251,18 @@ public class PilotImpl implements IPilot{
 			this.pstmt = this.conn.prepareStatement(sql);
 
 			//set the parameters for the statement
-			this.pstmt.setString(1, up.getFirst_name());
-			this.pstmt.setString(2, up.getLast_name());
-			this.pstmt.setInt(3, up.getAge());
-			this.pstmt.setString(4, up.getGender());
-			this.pstmt.setString(5, up.getNationality());
-			this.pstmt.setInt(6, up.getTraining_level());
-			this.pstmt.setInt(7, up.getId());
+			this.pstmt.setString(1, ua.getCountry());
+			this.pstmt.setString(2, ua.getCity());
+			this.pstmt.setString(3, ua.getAirport_name());
+			this.pstmt.setString(4, ua.getAirport_type());
+			this.pstmt.setInt(5, ua.getTotal_runways());
+			this.pstmt.setInt(6, ua.getTotal_terminals());
+			this.pstmt.setInt(7, ua.getId());
 
 			//execute the statement
 			this.pstmt.executeUpdate();
 
-			System.out.println("Updated Pilot with an ID: " + up.getId());
+			System.out.println("Updated Airport with an ID: " + ua.getId());
 
 			disconnectDB();
 
@@ -270,7 +272,19 @@ public class PilotImpl implements IPilot{
 			System.out.println(sx.getMessage());
 		}
 
+	}
 
+	//setters for Database connection's attributes
+	public void setDsn(String dsn) {
+		this.dsn = dsn;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
