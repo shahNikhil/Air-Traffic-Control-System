@@ -240,7 +240,7 @@ public class AirportImpl implements IAirport {
 				"airport_name = ?, " +
 				"airport_type = ?, " + 
 				"total_runways = ?, " +
-				"total_terminals = ?, " + 
+				"total_terminals = ? " + 
 				"WHERE id = ?";
 
 		try {

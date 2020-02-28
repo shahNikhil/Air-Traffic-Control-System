@@ -238,7 +238,7 @@ public class PilotImpl implements IPilot{
 				"age = ?," +
 				"gender = ?, " + 
 				"nationality = ?," +
-				"training_level = ?, " + 
+				"training_level = ? " + 
 				"WHERE id = ?";
 
 		try {
