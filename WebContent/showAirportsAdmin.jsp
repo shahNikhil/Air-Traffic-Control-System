@@ -17,7 +17,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>Show Airports</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
@@ -25,12 +25,13 @@
 <body>
 
 	<div class="w3-bar w3-black w3-large">
-		<a href="#" class="w3-bar-item w3-button w3-mobile"><i
-			class="w3-xlarge material-icons">home</i></a> <a href="#"
-			class="w3-bar-item w3-button w3-mobile">Pilots</a> <a href="#"
-			class="w3-bar-item w3-button w3-mobile">Airports</a> <a href="#"
-			class="w3-bar-item w3-button w3-right w3-mobile"><i
-			class="w3-xlarge material-icons">person</i></a>
+		<a href="adminPanel.jsp" class="w3-bar-item w3-button w3-mobile"><i
+			class="w3-xlarge material-icons">home</i></a> <a
+			href="showPilotsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Pilots</a>
+		<a href="showAirportsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Airports</a> <a
+			href="showAircraftsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Aircrafts</a>
+		<a href="index.jsp" class="w3-bar-item w3-button w3-right w3-mobile"><i
+			class="w3-xlarge material-icons">exit_to_app</i></a>
 	</div>
 
 	<div class="w3-margin w3-container">

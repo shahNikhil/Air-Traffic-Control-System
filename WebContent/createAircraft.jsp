@@ -26,7 +26,7 @@
 				<td>Total Seats</td>
 				<td><input type="text" name="total_seats" value="" /></td>
 			</tr>
-			
+
 			<tr>
 				<td>Weight Capacity (in KGs)</td>
 				<td><input type="number" name="weight_capacity" value="" /></td>
@@ -35,10 +35,14 @@
 
 			<tr>
 				<td>Is AutoPilot?</td>
-				<td><p><input class="w3-radio" type="radio" name="is_autoPilot" value="Yes" >
-  					<label>Yes</label></p>
-  					<p><input class="w3-radio" type="radio" name="is_autoPilot" value="No">
-  					<label>No</label></p></td>
+				<td><p>
+						<input class="w3-radio" type="radio" name="is_autoPilot"
+							value="Yes"> <label>Yes</label>
+					</p>
+					<p>
+						<input class="w3-radio" type="radio" name="is_autoPilot"
+							value="No"> <label>No</label>
+					</p></td>
 			</tr>
 
 			<tr>
