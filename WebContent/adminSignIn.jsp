@@ -17,7 +17,7 @@
 			style="max-width: 500px; margin: auto;">
 			<h2 class="w3-round-large w3-black w3-center">Sign in as an
 				Admin</h2>
-			<form class="w3-container" method="get" action="AdminService">
+			<form class="w3-container" method="post" action="AdminService">
 				<p>
 					<input placeholder="Username" name="username" class="w3-input" type="text">
 				</p>

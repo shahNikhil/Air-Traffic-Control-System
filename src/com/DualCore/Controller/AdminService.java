@@ -56,7 +56,7 @@ public class AdminService extends HttpServlet {
 		
 		if(userToCheck.get_username().contentEquals(user.get_username())) {
 			if(userToCheck.get_password().contentEquals(user.get_password())) {
-				response.sendRedirect("index.html");
+				pW.println("Hello User.");
 			}	
 			else {
 				pW.println("Your password is wrong.");
