@@ -14,10 +14,11 @@ import com.DualCore.Entity.Admin;
 import com.DualCore.Entity.LoginToken;
 
 /**
- * This servlet checks the authentication for admin
+ * Servlet for implementing the Aircraft with the help of Entity Classes and the DAO
  */
 @WebServlet("/AdminService")
 public class AdminService extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
        
     /**
