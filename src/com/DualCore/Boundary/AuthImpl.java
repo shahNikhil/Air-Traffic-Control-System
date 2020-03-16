@@ -9,7 +9,9 @@ import java.sql.Statement;
 
 import com.DualCore.Entity.Admin;
 import com.DualCore.Entity.LoginToken;
-
+/**
+ * 	The DAO for Admin Authentication Model which talks to the SQL
+ */
 public class AuthImpl {
 
 	public String dsn = "jdbc:mysql://localhost:3306/dualcore";

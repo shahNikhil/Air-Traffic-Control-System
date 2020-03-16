@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%--This is the admin panel for CRUD operations on various entities --%>	
+	
 <!DOCTYPE html>
 <html>
 <head>

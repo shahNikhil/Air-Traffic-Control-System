@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%--This is the jsp page if the admin wants to create a new Airport --%>	
+	
 <!DOCTYPE html>
 <html>
 <head>

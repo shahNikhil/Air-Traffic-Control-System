@@ -1,7 +1,10 @@
 package com.DualCore.Entity;
+
 /**
- * Stores all the attributes for the Aircraft model
+ * The is an Entity class for Aircraft Model
  */
+
+
 public class Aircraft {
 	private int id = 0;
 	private String manufacturer = "";

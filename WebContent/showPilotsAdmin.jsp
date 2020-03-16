@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%--This is the jsp page to show all the Pilots to admin along with CRUD functionality --%>		
 
 <%@ page import="java.util.*"%>
 

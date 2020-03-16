@@ -1,5 +1,9 @@
 package com.DualCore.Entity;
 
+/**
+ * The is an Entity class for every single login instance as a token
+ */
+
 public class LoginToken {
 	//attributes to check whether the login token is correct or not
 	private String _username;

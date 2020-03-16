@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%--This is the jsp page if the admin wants to edit any current Pilot --%>	
 
 <%@ page import="com.DualCore.Entity.*"%>
 <%@ page import="com.DualCore.Boundary.*"%>

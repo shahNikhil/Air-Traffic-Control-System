@@ -1,7 +1,9 @@
 package com.DualCore.Entity;
+
 /**
- * Stores all the attributes for the Airport model
+ * The is an Entity class for Airport Model
  */
+
 public class Airport {
 	
 	private int id = 0;

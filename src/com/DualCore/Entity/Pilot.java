@@ -1,9 +1,11 @@
 package com.DualCore.Entity;
 
+/**
+ * The is an Entity class for Pilot Model
+ */
+
 public class Pilot {
-	/**
-	 * Stores all the attributes for the Pilot model
-	 */
+
 	private int id = 0;
 	private String first_name = "";
 	private String last_name = "";

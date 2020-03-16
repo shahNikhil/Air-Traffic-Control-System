@@ -1,5 +1,9 @@
 package com.DualCore.Entity;
 
+/**
+ * The is an Entity class for Admin Model
+ */
+
 public class Admin {
 
 	//Attributes required for authenticating the Admin.

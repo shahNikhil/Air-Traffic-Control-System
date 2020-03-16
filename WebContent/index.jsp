@@ -1,3 +1,5 @@
+<!-- The home page of the application -->
+
 <!DOCTYPE html>
 <html>
 <head>

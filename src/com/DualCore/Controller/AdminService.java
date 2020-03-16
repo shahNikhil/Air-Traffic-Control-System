@@ -14,7 +14,7 @@ import com.DualCore.Entity.Admin;
 import com.DualCore.Entity.LoginToken;
 
 /**
- * Servlet for implementing the Aircraft with the help of Entity Classes and the DAO
+ * Servlet for implementing the Admin with the help of Entity Classes and the DAO
  */
 @WebServlet("/AdminService")
 public class AdminService extends HttpServlet {
