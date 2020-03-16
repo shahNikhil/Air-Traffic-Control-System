@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import com.DualCore.Entity.Airport;
 /**
- * 	Back-end for the Airport model
+ * 	The DAO for Airport Model which talks to the SQL
  */
 public class AirportImpl implements IAirport {
 

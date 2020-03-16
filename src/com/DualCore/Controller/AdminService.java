@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.DualCore.Boundary.AuthImpl;
 import com.DualCore.Entity.Admin;
 import com.DualCore.Entity.LoginToken;
 
 /**
- * Servlet implementation class AdminService
+ * This servlet checks the authentication for admin
  */
 @WebServlet("/AdminService")
 public class AdminService extends HttpServlet {
@@ -45,8 +46,10 @@ public class AdminService extends HttpServlet {
 		
 		PrintWriter pW = response.getWriter();
 		
+		//creating a user to check and login
 		Admin userToCheck = new Admin(username, password);
 		
+		//getting the user login token
 		LoginToken user = new LoginToken();
 		
 		//make a dao class and check password match using query  
@@ -56,19 +59,19 @@ public class AdminService extends HttpServlet {
 		
 		if(userToCheck.get_username().contentEquals(user.get_username())) {
 			if(userToCheck.get_password().contentEquals(user.get_password())) {
-				pW.println("Hello User.");
+				//redirecting the user to admin panel if the credentials are correct
+				response.sendRedirect("adminPanel.jsp");
 			}	
 			else {
+				//displaying the error when the password is wrong
 				pW.println("Your password is wrong.");
 			}
 		}
 		else {
+			//displaying the error when the username is wrong
 			pW.println("Your username is wrong.");
 		}
 		
-		//select password from admin where username = "admin";
-		//select password from admin where username = ?;
-		//call checkLoginauthentication if true response.redirect to admin panel else redirect same page.
 		doGet(request, response);
 	}
 

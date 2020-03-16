@@ -5,7 +5,9 @@ import java.util.ArrayList;
  * Makes sure that all methods are implemented for the Airport model
  */
 import com.DualCore.Entity.Airport;
-
+/**
+ * Makes sure that all methods are implemented for the Airport model
+ */
 public interface IAirport {
 	
 	public int newAirport(Airport a);

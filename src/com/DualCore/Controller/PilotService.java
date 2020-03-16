@@ -1,4 +1,4 @@
-package com.DualCore.Boundary;
+package com.DualCore.Controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.DualCore.Boundary.PilotImpl;
 import com.DualCore.Entity.Pilot;
 
 /**
- * Servlet implementation class PilotService
+ * Servlet for implementing the Pilot with the help of Entity Classes and the DAO
  */
 @WebServlet("/PilotService")
 public class PilotService extends HttpServlet {

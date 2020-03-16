@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import com.DualCore.Entity.Pilot;
 /**
- * 	Back-end for the Pilot model
+ * 	The DAO for Pilot Model which talks to the SQL
  */
 public class PilotImpl implements IPilot{
 

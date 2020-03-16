@@ -1,4 +1,4 @@
-package com.DualCore.Controller;
+package com.DualCore.Boundary;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

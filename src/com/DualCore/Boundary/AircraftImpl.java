@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import com.DualCore.Entity.Aircraft;
 
 /**
- * 	Back-end for the Aircraft model
+ * 	The DAO for Aircrfat Model which talks to the SQL
  */
 public class AircraftImpl implements IAircraft {
 
