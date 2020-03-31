@@ -157,7 +157,7 @@ public class FlightImpl implements IFlight {
 
 				//create a new Flight object
 				Flight a = new Flight();
-			
+
 				a.setId(rs.getInt("id"));
 				a.setPilot_name(rs.getString("pilot_name"));
 				a.setDep_airport(rs.getString("dep_airport"));
@@ -209,7 +209,7 @@ public class FlightImpl implements IFlight {
 			this.rs = this.pstmt.executeQuery();
 
 			while(this.rs.next()) {
-				
+
 				getA.setId(rs.getInt("id"));
 				getA.setPilot_name(rs.getString("pilot_name"));
 				getA.setDep_airport(rs.getString("dep_airport"));
@@ -270,7 +270,7 @@ public class FlightImpl implements IFlight {
 			this.pstmt.setInt(8, ua.getDelayed_by());
 			this.pstmt.setInt(9, ua.getPriority());
 			this.pstmt.setInt(10, ua.getId());
-			
+
 			//execute the statement
 			this.pstmt.executeUpdate();
 
@@ -285,8 +285,61 @@ public class FlightImpl implements IFlight {
 		}
 
 	}
-	
+
 	//Filter flights by
+	public ArrayList<Flight> showFlightsFilter(String f) {
+
+
+		ArrayList<Flight> allFlights = new ArrayList<Flight>();
+
+		//Query
+		String sql = "SELECT * FROM flight where flight_name = ?";
+
+		try {
+
+			connectDB();
+
+			//create the statement
+			this.pstmt = this.conn.prepareStatement(sql);
+
+			//set the parameters for the statement
+			this.pstmt.setString(1, f);
+
+			//walk through the ResultSet and append all the flights to the ArrayList
+
+			while(this.rs.next()) {
+
+				//create a new Flight object
+				Flight a = new Flight();
+
+				a.setId(this.rs.getInt("id"));
+				a.setPilot_name(this.rs.getString("pilot_name"));
+				a.setDep_airport(this.rs.getString("dep_airport"));
+				a.setArr_airport(this.rs.getString("arr_airport"));
+				a.setManufacturer(this.rs.getString("manufacturer"));
+				a.setFlight_name(this.rs.getString("flight_name"));
+				a.setDate(this.rs.getString("date"));
+				a.setScheduled_time(this.rs.getString("scheduled_time"));
+				a.setDelayed_by(this.rs.getInt("delayed_by"));
+				a.setPriority(this.rs.getInt("priority"));
+				//add the Flights to the ArrayList
+				allFlights.add(a);
+
+			}
+
+			disconnectDB();
+
+		}
+		catch(SQLException sx) {
+			System.out.println(sx.getMessage());
+		}
+
+		
+		
+		//return the ArrayList
+		return allFlights;
+		
+	}
 	
 
 	//setters for Database connection's attributes

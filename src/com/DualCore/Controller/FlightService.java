@@ -1,11 +1,14 @@
 package com.DualCore.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import com.DualCore.Boundary.FlightImpl;
 import com.DualCore.Entity.Flight;
@@ -45,6 +48,15 @@ public class FlightService extends HttpServlet {
 			response.sendRedirect("showFlightsAdmin.jsp");
 
 			break;
+			
+		case "filter" : 
+
+			String filterName = request.getParameter("'flight_name'");
+			flightDAO.showFlightsFilter(filterName);
+			
+			response.sendRedirect("guestPanel.jsp");
+			break;
+
 		}
 	}
 
@@ -102,6 +114,7 @@ public class FlightService extends HttpServlet {
 			response.sendRedirect("showFlightsAdmin.jsp");
 
 			break;
+
 		}
 
 	}
