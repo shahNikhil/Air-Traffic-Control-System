@@ -29,9 +29,10 @@
 	<div class="w3-bar w3-black w3-large">
 		<a href="adminPanel.jsp" class="w3-bar-item w3-button w3-mobile"><i
 			class="w3-xlarge material-icons">home</i></a> <a
-			href="showFlightsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Flights</a>
+			href="showPilotsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Pilots</a>
 		<a href="showAirportsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Airports</a> <a
-			href="showAircraftsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Aircrafts</a>
+			href="showAircraftsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Aircrafts</a> <a
+			href="showFlightsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Flights</a>
 		<a href="index.jsp" class="w3-bar-item w3-button w3-right w3-mobile"><i
 			class="w3-xlarge material-icons">exit_to_app</i></a>
 	</div>
@@ -47,7 +48,7 @@
 				<th>Arrival Airport</th>
 				<th>Manufacturer</th>
 				<th>Flight Name</th>
-				<th>date </th>
+				<th>Date</th>
 				<th>Scheduled Time</th>
 				<th>Delayed By</th>
 				<th>Priority</th>

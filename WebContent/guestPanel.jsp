@@ -23,7 +23,7 @@
 <body>
 
 	<div class="w3-bar w3-black w3-large">
-		<a href="adminPanel.jsp" class="w3-bar-item w3-button w3-mobile"><i
+		<a href="adminSignIn.jsp" class="w3-bar-item w3-button w3-mobile"><i
 			class="w3-xlarge material-icons">home</i></a> <a href="index.jsp"
 			class="w3-bar-item w3-button w3-right w3-mobile"><i
 			class="w3-xlarge material-icons">exit_to_app</i></a>
