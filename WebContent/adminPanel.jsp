@@ -19,8 +19,9 @@
 		<a href="adminPanel.jsp" class="w3-bar-item w3-button w3-mobile"><i
 			class="w3-xlarge material-icons">home</i></a> <a
 			href="showPilotsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Pilots</a>
-		<a href="showAirportsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Airports</a> <a
-			href="showAircraftsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Aircrafts</a>
+		<a href="showAirportsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Airports</a>
+		 <a href="showAircraftsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Aircrafts</a>
+		  <a href="showFlightsAdmin.jsp" class="w3-bar-item w3-button w3-mobile">Flights</a>
 		<a href="index.jsp" class="w3-bar-item w3-button w3-right w3-mobile"><i
 			class="w3-xlarge material-icons">exit_to_app</i></a>
 	</div>
@@ -63,6 +64,17 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="w3-third">
+				<div class="w3-card-4 w3-round-large w3-row-padding">
+					<div class="w3-col l9 m9 s9">
+						<h4>Flight</h4>
+					</div>
+					<div class="w3-col l3 m3 s3" style="margin-top: 4px;">
+						<a href="showFlightsAdmin.jsp"> <i
+							class="w3-btn w3-hover-black w3-hover-text-white w3-round-large material-icons">edit</i></a>
+					</div>
+				</div>
 
 		</div>
 

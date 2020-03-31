@@ -42,7 +42,7 @@ public class AirportService extends HttpServlet {
 			airportDAO.deleteAirport(Integer.parseInt(request.getParameter("id")));
 
 			//redirect the user back to the airport list
-			response.sendRedirect("showAirports.jsp");
+			response.sendRedirect("showAirportsAdmin.jsp");
 
 			break;
 		}
@@ -74,7 +74,7 @@ public class AirportService extends HttpServlet {
 			airportDAO.updateAirport(editA);
 
 			//redirect the user back to the Airport list
-			response.sendRedirect("showAirports.jsp");
+			response.sendRedirect("showAirportsAdmin.jsp");
 
 			break;
 
@@ -94,7 +94,7 @@ public class AirportService extends HttpServlet {
 			int newId = airportDAO.newAirport(createA);
 
 			//redirect the user back to the Airport list
-			response.sendRedirect("showAirports.jsp");
+			response.sendRedirect("showAirportsAdmin.jsp");
 
 			break;
 		}

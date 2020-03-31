@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.DualCore.Entity.Aircraft;
+import com.DualCore.Entity.Flight;
 
 /**
- * 	The DAO for Aircraft Model which talks to the SQL
+ * 	The DAO for Flight Model which talks to the SQL
  */
-public class AircraftImpl implements IAircraft {
+public class FlightImpl implements IFlight {
 
 	public String dsn = "jdbc:mysql://localhost:3306/dualcore";
 	public String username = "root";
@@ -68,11 +68,11 @@ public class AircraftImpl implements IAircraft {
 
 	//CRUD Operations
 
-	//create a new Aircraft
+	//create a new Flight
 	@Override
-	public int newAircraft(Aircraft a) {
+	public int newFlight(Flight f) {
 
-		int newAircraftId = 0;
+		int newFlightId = 0;
 
 		try {
 
@@ -80,15 +80,15 @@ public class AircraftImpl implements IAircraft {
 			connectDB();
 
 			//prepare a string query to fire it over the database
-			String sql = "INSERT INTO aircraft (manufacturer, total_seats, weight_capacity, is_autoPilot, max_speed)"
-					+ " values ('" + a.getManufacturer() + "','" + a.getTotal_seats() + "','" + a.getWeight_capacity() + "','" + a.getIs_autoPilot() +
-					"','" + a.getMax_speed() + "');";
+			String sql = "INSERT INTO flight (pilot_name, dep_airport, arr_airport, manufacturer,flight_name,date,scheduled_time,delayed_by,priority)"
+					+ " values ('" + f.getPilot_name() + "','" + f.getDep_airport() + "','" + f.getArr_airport() + "','" + f.getManufacturer() + "','" + f.getFlight_name() + "','" + f.getDate() + "','" + f.getScheduled_time() + "','" + f.getDelayed_by() + "','" + f.getPriority()
+					+ "');";
 
 			//Create the statement
 			this.stmt = this.conn.createStatement();
 
 			//Execute the statement
-			newAircraftId = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			newFlightId = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 
 			//Disconnect from the Database
 			disconnectDB();
@@ -99,20 +99,20 @@ public class AircraftImpl implements IAircraft {
 			System.out.println(sx.getMessage());
 		}
 
-		System.out.println("Inserted a new Aircraft with ID: " + newAircraftId);
+		System.out.println("Inserted a new Flight with ID: " + newFlightId);
 
-		return newAircraftId;
+		return newFlightId;
 	}
 
-	//delete an aircraft
+	//delete an flight
 	@Override
-	public void deleteAircraft(int id) {
+	public void deleteFlight(int id) {
 		try {
 
 			connectDB();
 
 			//Query
-			String sql = "DELETE FROM aircraft WHERE id=?";
+			String sql = "DELETE FROM flight WHERE id=?";
 
 			this.pstmt = this.conn.prepareStatement(sql);
 
@@ -122,7 +122,7 @@ public class AircraftImpl implements IAircraft {
 			//execute the query
 			this.pstmt.executeUpdate();
 
-			System.out.println("Deleted Aircraft with id: " + id);
+			System.out.println("Deleted Flight with id: " + id);
 
 			disconnectDB();
 
@@ -135,11 +135,11 @@ public class AircraftImpl implements IAircraft {
 
 	//something like select * from
 	@Override
-	public ArrayList<Aircraft> showAircrafts() {
-		ArrayList<Aircraft> allAircrafts = new ArrayList<Aircraft>();
+	public ArrayList<Flight> showFlights() {
+		ArrayList<Flight> allFlights = new ArrayList<Flight>();
 
 		//Query
-		String sql = "SELECT * FROM aircraft";
+		String sql = "SELECT * FROM flight";
 
 		try {
 
@@ -151,21 +151,25 @@ public class AircraftImpl implements IAircraft {
 			//execute the statement
 			this.rs = this.stmt.executeQuery(sql);
 
-			//walk through the ResultSet and append all the aircrafts to the ArrayList
+			//walk through the ResultSet and append all the flights to the ArrayList
 
 			while(this.rs.next()) {
 
-				//create a new Aircraft object
-				Aircraft a = new Aircraft();
-
+				//create a new Flight object
+				Flight a = new Flight();
+			
 				a.setId(rs.getInt("id"));
+				a.setPilot_name(rs.getString("pilot_name"));
+				a.setDep_airport(rs.getString("dep_airport"));
+				a.setArr_airport(rs.getString("arr_airport"));
 				a.setManufacturer(rs.getString("manufacturer"));
-				a.setTotal_seats(rs.getString("total_seats"));
-				a.setWeight_capacity(rs.getString("weight_capacity"));
-				a.setIs_autoPilot(rs.getString("is_autoPilot"));
-				a.setMax_speed(rs.getString("max_speed"));
-				//add the Aircrafts to the ArrayList
-				allAircrafts.add(a);
+				a.setFlight_name(rs.getString("flight_name"));
+				a.setDate(rs.getString("date"));
+				a.setScheduled_time(rs.getString("scheduled_time"));
+				a.setDelayed_by(rs.getInt("delayed_by"));
+				a.setPriority(rs.getInt("priority"));
+				//add the Flights to the ArrayList
+				allFlights.add(a);
 
 			}
 
@@ -176,20 +180,20 @@ public class AircraftImpl implements IAircraft {
 			System.out.println(sx.getMessage());
 		}
 
-		System.out.println("Listed " + allAircrafts.size() + " Aircrafts.");
+		System.out.println("Listed " + allFlights.size() + " Flights.");
 
 		//return the ArrayList
-		return allAircrafts;
+		return allFlights;
 	}
 
 	//retrieve a single object
 	@Override
-	public Aircraft getAircraft(int id) {
-		//create a new empty Aircraft object
-		Aircraft getA = new Aircraft();
+	public Flight getFlight(int id) {
+		//create a new empty Flight object
+		Flight getA = new Flight();
 
 		//Query
-		String sql = "SELECT * FROM aircraft WHERE id=?";
+		String sql = "SELECT * FROM flight WHERE id=?";
 
 		try {
 
@@ -205,13 +209,17 @@ public class AircraftImpl implements IAircraft {
 			this.rs = this.pstmt.executeQuery();
 
 			while(this.rs.next()) {
-			
+				
 				getA.setId(rs.getInt("id"));
+				getA.setPilot_name(rs.getString("pilot_name"));
+				getA.setDep_airport(rs.getString("dep_airport"));
+				getA.setArr_airport(rs.getString("arr_airport"));
 				getA.setManufacturer(rs.getString("manufacturer"));
-				getA.setTotal_seats(rs.getString("total_seats"));
-				getA.setWeight_capacity(rs.getString("weight_capacity"));
-				getA.setIs_autoPilot(rs.getString("is_autoPilot"));
-				getA.setMax_speed(rs.getString("max_speed"));
+				getA.setFlight_name(rs.getString("flight_name"));
+				getA.setDate(rs.getString("date"));
+				getA.setScheduled_time(rs.getString("scheduled_time"));
+				getA.setDelayed_by(rs.getInt("delayed_by"));
+				getA.setPriority(rs.getInt("priority"));
 			}
 
 		}
@@ -224,20 +232,24 @@ public class AircraftImpl implements IAircraft {
 			disconnectDB();
 		}
 
-		//return the single aircraft data
+		//return the single flight data
 		return getA;
 	}
 
-	//update any aircraft in the database
+	//update any flight in the database
 	@Override
-	public void updateAircraft(Aircraft ua) {
+	public void updateFlight(Flight ua) {
 		//Query
-		String sql = "UPDATE aircraft SET " + 
-				"manufacturer = ?, " + 
-				"total_seats = ?, " +
-				"weight_capacity = ?, " +
-				"is_autoPilot = ?, " + 
-				"max_speed = ? " +
+		String sql = "UPDATE flight SET " + 
+				"pilot_name = ?, " +
+				"dep_airport = ?, " +
+				"arr_airport = ?, " + 
+				"manufacturer = ?, " +
+				"flight_name = ?, " +
+				"date = ?, " +
+				"scheduled_time = ?, " +
+				"delayed_by = ?, " +
+				"priority = ? " + 
 				"WHERE id = ?";
 
 		try {
@@ -248,17 +260,21 @@ public class AircraftImpl implements IAircraft {
 			this.pstmt = this.conn.prepareStatement(sql);
 
 			//set the parameters for the statement
-			this.pstmt.setString(1, ua.getManufacturer());
-			this.pstmt.setString(2, ua.getTotal_seats());
-			this.pstmt.setString(3, ua.getWeight_capacity());
-			this.pstmt.setString(4, ua.getIs_autoPilot());
-			this.pstmt.setString(5, ua.getMax_speed());
-			this.pstmt.setInt(6, ua.getId());
-
+			this.pstmt.setString(1, ua.getPilot_name());
+			this.pstmt.setString(2, ua.getDep_airport());
+			this.pstmt.setString(3, ua.getArr_airport());
+			this.pstmt.setString(4, ua.getManufacturer());
+			this.pstmt.setString(5, ua.getFlight_name());
+			this.pstmt.setString(6, ua.getDate());
+			this.pstmt.setString(7, ua.getScheduled_time());
+			this.pstmt.setInt(8, ua.getDelayed_by());
+			this.pstmt.setInt(9, ua.getPriority());
+			this.pstmt.setInt(10, ua.getId());
+			
 			//execute the statement
 			this.pstmt.executeUpdate();
 
-			System.out.println("Updated Aircraft with an ID: " + ua.getId());
+			System.out.println("Updated Flight with an ID: " + ua.getId());
 
 			disconnectDB();
 
@@ -269,6 +285,9 @@ public class AircraftImpl implements IAircraft {
 		}
 
 	}
+	
+	//Filter flights by
+	
 
 	//setters for Database connection's attributes
 	public void setDsn(String dsn) {

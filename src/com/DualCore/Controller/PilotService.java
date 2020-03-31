@@ -41,7 +41,7 @@ public class PilotService extends HttpServlet {
 			pilotDAO.deletePilot(Integer.parseInt(request.getParameter("id")));
 
 			//redirect the user back to the pilot list
-			response.sendRedirect("showPilots.jsp");
+			response.sendRedirect("showPilotsAdmin.jsp");
 			break;
 		}
 	}
@@ -71,7 +71,7 @@ public class PilotService extends HttpServlet {
 				pilotDAO.updatePilot(editP);
 				
 				//redirect the user back to the pilot list
-				response.sendRedirect("showPilots.jsp");
+				response.sendRedirect("showPilotsAdmin.jsp");
 				break;
 				
 			case "create" :
@@ -89,7 +89,7 @@ public class PilotService extends HttpServlet {
 				int newId = pilotDAO.newPilot(createP);
 				
 				//redirect the user back to the Pilot list
-				response.sendRedirect("showPilots.jsp");
+				response.sendRedirect("showPilotsAdmin.jsp");
 				
 				break;
 		}

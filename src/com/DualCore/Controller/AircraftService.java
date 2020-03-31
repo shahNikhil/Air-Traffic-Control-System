@@ -42,7 +42,7 @@ public class AircraftService extends HttpServlet {
 			aircraftDAO.deleteAircraft(Integer.parseInt(request.getParameter("id")));
 
 			//redirect the user back to the Aircraft list
-			response.sendRedirect("showAircrafts.jsp");
+			response.sendRedirect("showAircraftsAdmin.jsp");
 
 			break;
 		}
@@ -73,7 +73,7 @@ public class AircraftService extends HttpServlet {
 			aircraftDAO.updateAircraft(editA);
 
 			//redirect the user back to the Aircraft list
-			response.sendRedirect("showAircrafts.jsp");
+			response.sendRedirect("showAircraftsAdmin.jsp");
 
 			break;
 
@@ -92,7 +92,7 @@ public class AircraftService extends HttpServlet {
 			int newId = aircraftDAO.newAircraft(createA);
 
 			//redirect the user back to the Aircraft list
-			response.sendRedirect("showAircrafts.jsp");
+			response.sendRedirect("showAircraftsAdmin.jsp");
 
 			break;
 		}

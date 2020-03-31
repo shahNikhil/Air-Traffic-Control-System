@@ -5,6 +5,7 @@
 
 <%@ page import="com.DualCore.Entity.*"%>
 <%@ page import="com.DualCore.Boundary.*"%>
+<%@ page import="com.DualCore.Controller.*"%>
 
 <%
 	String error = "";
