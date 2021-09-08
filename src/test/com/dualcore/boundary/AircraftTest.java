@@ -1,8 +1,9 @@
 package test.com.dualcore.boundary;
 
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.DualCore.Entity.Aircraft;
 
